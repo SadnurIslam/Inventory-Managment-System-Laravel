@@ -13,7 +13,7 @@
     <div class="container-box vh-100">
         <div class="row h-100">
             <div class="col-3 col-lg-2 bg-dark">
-                <div class="row py-3">
+                <div class="row py-2">
                     <div class="col-12">
                         <div class="logo text-white text-center">
                             <h2 class="mb-0"><a href="{{url('/')}}"><span class="text-danger">Z</span>tech</a></h2>
@@ -38,15 +38,17 @@
                 </div>
             </div>
             <div class="col-9 col-lg-10 content-box-bg">
-                <div class="row py-3 header-box bg-white">
+                <div class="row py-2 header-box bg-white">
                     <div class="col-12">
                         <header>
                             <div class="row">
                                 <div class="col-9 d-flex align-items-center px-4">
+                                <!-- <form action="inventory/search" method="get" class="w-100 mb-0"  class="search-form">
                                     <div class="input-group">
-                                        <input type="search" class=" header-search" placeholder="Search anything here..." aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                        <input type="search" class=" header-search" placeholder="Search inventory here..." aria-label="Recipient's username" aria-describedby="basic-addon2">
                                         <button class="input-group-text" id="basic-addon2"><i class="fa-solid fa-magnifying-glass"></i></button>
                                     </div>
+                                </form> -->
                                 </div>
                                 <div class="col-3">
                                     <div class="profile text-end">

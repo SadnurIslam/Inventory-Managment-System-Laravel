@@ -33,27 +33,29 @@
                         <tr>
                             <th>SL</th>
                             <th>Product</th>
+                            <th>Category</th>
                             <th>Order Value</th>
                             <th>Quantity</th>
                             <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Product 1</td>
-                            <td>1000</td>
-                            <td>10</td>
-                            <td>Delivered</td>
-
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Product 2</td>
-                            <td>2000</td>
-                            <td>20</td>
-                            <td>Delivered</td>
-                        </tr>                                         
+                        @foreach($order as $ord)
+                            <tr>
+                                <td>19{{$ord->id}}</td>
+                                <td>{{$ord->name}}</td>
+                                <td>{{$ord->category}}</td>
+                                <td>{{$ord->unit_price}}</td>
+                                <td>{{$ord->quantity}}</td>
+                                @if($ord->status == 'delivered')
+                                    <td><span class="badge bg-success">Delivered</span></td>
+                                @elseif($ord->status == 'pending')
+                                    <td><span class="badge bg-warning">Pending</span></td>
+                                @else
+                                    <td><span class="badge bg-danger">Returned</span></td>
+                                @endif
+                            </tr>
+                        @endforeach                          
                     </tbody>
                 </table>
             </div>
@@ -64,27 +66,36 @@
             <h4 class="text-center">New Order</h4>
             <br>
             <!-- Product Form -->
-            <form>
+            <form method="post" action="order">
+                @csrf
                 <div class="mb-3">
                     <label for="productName" class="form-label">Product Name</label>
-                    <input type="text" class="form-control" id="productName" >
+                    <input type="text" class="form-control" id="productName" name="name">
                 </div>
                 <div class="mb-3">
                     <label for="category" class="form-label">Category</label>
-                    <select class="form-select" id="category">
-                        <option selected>Select One</option>
-                        <option value="1">Coffee</option>
-                        <option value="2">Spices</option>
+                    <select class="form-select" id="category" name="category">
+                        @foreach ($category as $cat)
+                            <option value="{{$cat->category}}">{{ucfirst($cat->category)}}</option>
+                        
+                        @endforeach
                     </select>
                 </div>
                 <div class="mb-3">
-                    <label for="buyingPrice" class="form-label">Order Value</label>
-                    <input type="number" class="form-control" id="buyingPrice">
+                    <label for="buyingPrice" class="form-label">Order Value (per unit)</label>
+                    <input type="text" class="form-control" id="buyingPrice" name="unit_price">
                 </div>
                 <div class="mb-3">
                     <label for="quantity" class="form-label">Quantity</label>
-                    <input type="number" class="form-control" id="quantity">
+                    <input type="number" class="form-control" id="quantity" name="quantity">
                 </div>
+                <div class="mb-3">
+                    <label for="status" class="form-label">Status</label>
+                    <select class="form-select" id="status" name="status">
+                        <option value="delivered">Delivered</option>
+                        <option value="pending">Pending</option>
+                        <option value="returned">Returned</option>
+                    </select>
                 <!-- Form Footer -->
                 <div class="form-footer text-center">
                     <button type="button" class=" btn btn-secondary" data-bs-dismiss="offcanvas" aria-label="Close" >Discard</button>

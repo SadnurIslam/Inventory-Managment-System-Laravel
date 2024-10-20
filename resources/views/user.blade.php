@@ -13,9 +13,9 @@
                     <div class="col-9">
                         <div class="row">
                             <div class="col-9 text-end d-flex">
-                                <form action="inventory/search" method="get" class="w-100"  class="search-form">
+                                <form action="user/search" method="get" class="w-100"  class="search-form">
                                     <div class="input-group text-end">
-                                        <input type="search" class=" header-search" placeholder="Search user..." aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                        <input name="search" type="search" class=" header-search" placeholder="Search user..." aria-label="Recipient's username" aria-describedby="basic-addon2">
                                         <button class="btn  input-group-text" id="basic-addon2"><i class="fa-solid fa-magnifying-glass"></i></button>
                                     </div>
                                 </form>
@@ -48,8 +48,8 @@
                                 <td>{{$user->phone}}</td>
                                 <td>{{$user->role}}</td>
                                 <td class="action text-center">
-                                    <a class="btn btn-primary" href="{{'edit-user/'.$user->id}}" ><i class="fa-solid fa-pen-to-square"></i></a>
-                                    <form action="user" method="POST" style="display:inline-block;">
+                                    <a class="btn btn-primary" href="{{'/edit-user/'.$user->id}}" ><i class="fa-solid fa-pen-to-square"></i></a>
+                                    <form action="/user" method="POST" style="display:inline-block;">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" name="delete" value="{{$user->username}}" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this user?')">

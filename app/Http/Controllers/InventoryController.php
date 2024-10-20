@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Inventory;
+use App\Models\Category;
 class InventoryController extends Controller
 {
     //
     function index(){
         $inventory = Inventory::all();
-        return view('inventory',['inventory'=>$inventory]);
+        $category = Category::all();
+        return view('inventory',['inventory'=>$inventory, 'category'=>$category]);
     }
     function addInventory(Request $request){
         $inventory = new Inventory();
@@ -26,8 +28,9 @@ class InventoryController extends Controller
         return redirect('inventory');
     }
     function editInventory($id){
+        $category = Category::all();
         $inventory = Inventory::where('id', $id)->first();
-        return view('edit-inventory',['inventory'=>$inventory]);
+        return view('edit-inventory',['inventory'=>$inventory,'category'=>$category]);
     }
     function UpdateInventory(Request $request,$id){
         $inventory = Inventory::find($id);

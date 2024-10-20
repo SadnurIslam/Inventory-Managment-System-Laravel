@@ -87,10 +87,9 @@
                     <label for="category" class="form-label">Category</label>
                     <select class="form-select" id="category" name="category">
                         <option selected>Select One</option>
-                        <option value="keyboard">Keyboard</option>
-                        <option value="mouse">Mouse</option>
-                        <option value="monitor">Monitor</option>
-                        <option value="speaker">Speaker</option>
+                        @foreach ($category as $cat)
+                            <option value="{{$cat->category}}">{{ucfirst($cat->category)}}</option>                        
+                        @endforeach
                     </select>
                 </div>
                 <div class="mb-3">

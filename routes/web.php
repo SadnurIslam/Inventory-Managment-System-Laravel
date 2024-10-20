@@ -33,11 +33,13 @@ Route::middleware([AuthCheck::class])->group(function () {
     Route::get('inventory/search', [InventoryController::class, 'search']);
 
     Route::get('order', [OrderController::class, 'index']);
+    Route::post('order', [OrderController::class, 'addOrder']);
  
 
     Route::get('report', [ReportController::class, 'index']);
 
     Route::get('supplier', [SupplierController::class, 'index']);
+    Route::post('supplier', [SupplierController::class, 'addSupplier']);
 
 
     Route::get('profile/{username}',[ProfileController::class,'index']);
@@ -51,4 +53,5 @@ Route::middleware([AdminCheck::class])->group(function () {
     Route::delete('user', [UserController::class, 'deleteUser']);
     Route::get('edit-user/{id}', [UserController::class, 'editUser']);
     Route::put('edit-user/{id}', [UserController::class, 'UpdateUser']);
+    Route::get('user/search', [UserController::class, 'search']);
 });

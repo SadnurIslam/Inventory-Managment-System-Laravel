@@ -30,10 +30,14 @@
                 <div class="mb-3">
                     <label for="category" class="form-label">Category</label>
                     <select class="form-select" id="category" name="category">
-                        <option value="keyboard" @if($inventory->category == 'keyboard') selected @endif >Keyboard</option>
-                        <option value="mouse" @if($inventory->category == 'mouse') selected @endif >Mouse</option>
-                        <option value="monitor" @if($inventory->category == 'monitor') selected @endif >Monitor</option>
-                        <option value="speaker" @if($inventory->category == 'speaker') selected @endif >Speaker</option>
+                        @foreach ($category as $cat)
+                            @if($inventory->category == $cat->category) 
+                                <option value="{{$cat->category}}" selected>{{ucfirst($cat->category)}}</option>
+                            @else
+                                <option value="{{$cat->category}}"  >{{ucfirst($cat->category)}}</option>
+                            @endif
+                        @endforeach
+                        
                     </select>
                 </div>
                 <div class="mb-3">

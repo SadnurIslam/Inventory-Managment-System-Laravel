@@ -13,7 +13,7 @@
                     <div class="col-9">
                         <div class="row">
                             <div class="col-9 text-end d-flex">
-                                <form action="inventory/search" method="get" class="w-100"  class="search-form">
+                                <form action="supplier/search" method="get" class="w-100"  class="search-form">
                                     <div class="input-group text-end">
                                         <input type="search" class=" header-search" placeholder="Search supplier..." aria-label="Recipient's username" aria-describedby="basic-addon2">
                                         <button class="btn  input-group-text" id="basic-addon2"><i class="fa-solid fa-magnifying-glass"></i></button>
@@ -35,26 +35,22 @@
                             <th>SL</th>
                             <th>Supplier Name</th>
                             <th>Product</th>
+                            <th>Category</th>
                             <th>Contact</th>
                             <th>Email</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Supplier 1</td>
-                            <td>Product 1</td>
-                            <td>01712345678</td>
-                            <td>sa@gmail.com </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Supplier 2</td>
-                            <td>Product 2</td>
-                            <td>01712345678</td>
-                            <td>sa@gmail.com </td>
-                        </tr>
-                                         
+                        @foreach($supplier as $sup)
+                            <tr>
+                                <td>19{{$sup->id}}</td>
+                                <td>{{$sup->name}}</td>
+                                <td>{{$sup->product}}</td>
+                                <td>{{$sup->category}}</td>
+                                <td>{{$sup->phone}}</td>
+                                <td>{{$sup->email}}</td>
+                            </tr>
+                        @endforeach                                         
                     </tbody>
                 </table>
             </div>
@@ -65,30 +61,31 @@
             <h4 class="text-center">New Supplier</h4>
             <br>
             <!-- Product Form -->
-            <form>
+            <form action="supplier" method="post">
+                @csrf
                 <div class="mb-3">
                     <label for="productName" class="form-label">Supplier Name</label>
-                    <input type="text" class="form-control" id="productName" >
+                    <input type="text" class="form-control" id="productName" name="name">
                 </div>
                 <div class="mb-3">
                     <label for="productID" class="form-label">Product</label>
-                    <input type="text" class="form-control" id="productID" >
+                    <input type="text" class="form-control" id="productID" name="product">
                 </div>
                 <div class="mb-3">
                     <label for="category" class="form-label">Category</label>
-                    <select class="form-select" id="category">
-                        <option selected>Select One</option>
-                        <option value="1">Coffee</option>
-                        <option value="2">Spices</option>
+                    <select class="form-select" id="category" name="category">
+                        @foreach ($category as $cat)
+                            <option value="{{$cat->category}}">{{ucfirst($cat->category)}}</option>
+                        @endforeach
                     </select>
                 </div>
                 <div class="mb-3">
                     <label for="buyingPrice" class="form-label">Contact</label>
-                    <input type="number" class="form-control" id="buyingPrice">
+                    <input type="number" class="form-control" id="buyingPrice" name="phone">
                 </div>
                 <div class="mb-3">
                     <label for="quantity" class="form-label">Email</label>
-                    <input type="number" class="form-control" id="quantity">
+                    <input type="text" class="form-control" id="quantity" name="email">
                 </div>
                 <!-- Form Footer -->
                 <div class="form-footer text-center">

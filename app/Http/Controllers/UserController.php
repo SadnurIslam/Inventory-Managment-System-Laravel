@@ -54,4 +54,10 @@ class UserController extends Controller
         $user->save();
         return redirect('user');
     }
+
+    public function search(Request $request)
+    {
+        $users = User::where('name', 'like', '%'.$request->search.'%')->get();
+        return view('user', ['users' => $users]);
+    }
 }
