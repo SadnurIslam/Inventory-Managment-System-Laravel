@@ -1,0 +1,67 @@
+@extends('base')
+@section('title')
+    Ztech | Edit Inventory
+@endsection
+@section('content')
+<div class="container mt-2">
+<div class="row justify-content-center">
+<div class="col-md-8">
+<div class="card shadow-sm">
+    <div class="card-header bg-info text-white">
+        <div class="row">
+            <div class="col-3 mt-2">
+                <a class="btn" href="{{ URL::previous() }}">Back</a>
+            </div>
+            <div class="col-6"><h4 class="text-center mt-2">Update Product Info</h4></div>
+            <div class="col-3">
+                
+            </div>
+        </div>
+    </div>
+    <div class="card-body px-5">
+    <form action="/edit-inventory/{{$inventory->id}}" method="post">
+                @csrf
+                <input type="hidden" name="_method" value="put">
+                <!-- Name -->
+                <div class="mb-3">
+                    <label for="productName" class="form-label">Product Name</label>
+                    <input type="text" class="form-control" id="productName" name="name" value="{{$inventory->name}}" required>
+                </div>
+                <div class="mb-3">
+                    <label for="category" class="form-label">Category</label>
+                    <select class="form-select" id="category" name="category">
+                        <option value="keyboard" @if($inventory->category == 'keyboard') selected @endif >Keyboard</option>
+                        <option value="mouse" @if($inventory->category == 'mouse') selected @endif >Mouse</option>
+                        <option value="monitor" @if($inventory->category == 'monitor') selected @endif >Monitor</option>
+                        <option value="speaker" @if($inventory->category == 'speaker') selected @endif >Speaker</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="buyingPrice" class="form-label">Unit Price</label>
+                    <input type="text" class="form-control" id="buyingPrice" name="unit_price" value="{{$inventory->unit_price}}" required>
+                </div>
+                <div class="mb-3">
+                    <label for="quantity" class="form-label">Quantity</label>
+                    <input type="number" class="form-control" id="quantity" name="quantity" value="{{$inventory->quantity}}" required>
+                </div>
+                <!-- Form Footer -->
+    <!-- Submit Button -->
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                </div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+@endsection
+
+<style>
+    a.btn{
+        color: white;
+        background-color: #779bb0;
+        border-radius: 5px;
+        padding: 4px 9px;
+    }
+</style>
