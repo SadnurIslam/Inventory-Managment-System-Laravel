@@ -43,7 +43,7 @@
                     <tbody>
                         @foreach($supplier as $sup)
                             <tr>
-                                <td>19{{$sup->id}}</td>
+                                <td>{{$sup->id}}</td>
                                 <td>{{$sup->name}}</td>
                                 <td>{{$sup->product}}</td>
                                 <td>{{$sup->category}}</td>

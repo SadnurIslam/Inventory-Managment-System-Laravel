@@ -37,20 +37,22 @@
                             <th>Product ID</th>
                             <th>Product Name</th>
                             <th>Category</th>
-                            <th class="text-center">Quantity</th>
-                            <th class="text-center">Availability</th>
-                            <th class="text-center">Actions</th>
+                            <th>Unit Buying Price</th>
+                            <th>Quantity</th>
+                            <th>Availability</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($inventory as $product)
 
                         <tr>
-                            <td>#Z99{{$product->id}}</td>
+                            <td>#{{$product->id}}</td>
                             <td>{{$product->name}}</td>
                             <td >{{$product->category}}</td>
-                            <td class="text-center">{{$product->quantity}}</td>
-                            <td class="text-center">
+                            <td>{{$product->unit_price}} Tk.</td>
+                            <td>{{$product->quantity}}</td>
+                            <td>
                                 @if($product->quantity > 0)
                                     <span class="badge bg-success">In Stock</span>
                                 @else

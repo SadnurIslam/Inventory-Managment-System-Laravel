@@ -12,7 +12,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Middleware\AdminCheck;
 use App\Http\Middleware\AuthCheck;
 use App\Http\Middleware\LoginCheck;
-
+use App\Http\Controllers\PurchaseController;
 
 Route::middleware(LoginCheck::class)->group(function () {
     Route::get('login',[LoginController::class,'index']);
@@ -31,6 +31,9 @@ Route::middleware([AuthCheck::class])->group(function () {
     Route::get('edit-inventory/{id}', [InventoryController::class, 'editInventory']);
     Route::put('edit-inventory/{id}', [InventoryController::class, 'UpdateInventory']);
     Route::get('inventory/search', [InventoryController::class, 'search']);
+
+    Route::get('purchase', [PurchaseController::class, 'index']);
+    Route::post('purchase', [PurchaseController::class, 'addPurchase']);
 
     Route::get('order', [OrderController::class, 'index']);
     Route::post('order', [OrderController::class, 'addOrder']);

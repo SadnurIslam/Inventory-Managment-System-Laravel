@@ -46,6 +46,6 @@ class InventoryController extends Controller
         $inventory = Inventory::where('name','like',"%$request->search%")
         ->orWhere('category','like',"%{$request->search}%")
         ->get();
-        return view('inventory',['inventory'=>$inventory,'search'=>$request->search,'icon'=>"cancel"]);
+        return view('inventory',['inventory'=>$inventory,'search'=>$request->search,'category'=>Category::all()]);
     }
 }
