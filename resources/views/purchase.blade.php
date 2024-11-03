@@ -91,6 +91,10 @@
                     <label for="quantity" class="form-label">Quantity</label>
                     <input type="number" class="form-control" id="quantity" name="quantity">
                 </div>
+                <div class="mb-3">
+                    <label for="quantity" class="form-label">Warranty</label>
+                    <input type="date" class="form-control" id="quantity" name="expiry_date">
+                </div>
                 <!-- Form Footer -->
                 <div class="form-footer text-center">
                     <button type="button" class=" btn btn-secondary" data-bs-dismiss="offcanvas" aria-label="Close" >Discard</button>

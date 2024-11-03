@@ -64,7 +64,7 @@
                                             
                                             </button>
                                             <ul class="dropdown-menu">
-                                                <li><a class="dropdown-item" href="{{'profile/'.session('name')}}">Profile</a></li>
+                                                <li><a class="dropdown-item" href="{{'profile/'.session('username')}}">Profile</a></li>
                                                 <li><hr class="dropdown-divider"></li>
                                                 <li><a class="dropdown-item" href="{{'/logout'}}">Logout</a></li>
                                             </ul>

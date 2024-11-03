@@ -39,7 +39,8 @@
                             <th>Customer Name</th>
                             <th>Unit Selling Price</th>
                             <th>Quantity</th>
-                            <th>Added By</th>                            
+                            <th>Added By</th>  
+                            <th>Invoice</th>                          
                         </tr>
                     </thead>
                     <tbody>
@@ -51,7 +52,8 @@
                             <td >{{$order->cname}}</td>
                             <td>{{$order->unit_sell}} Tk.</td>
                             <td>{{$order->quantity}}</td>
-                            <td>{{$order->added_by}}</td>                            
+                            <td>{{$order->added_by}}</td>   
+                            <td><a class="text-decoration-none" href="{{'/invoice/'.$order->id.'/pdf'}}">download</a></td>                         
                         </tr>
 
                         @endforeach
@@ -68,8 +70,8 @@
             <form action="order" method="post">
                 @csrf
                 <div class="mb-3">
-                    <label for="pname" class="form-label">Product Name</label>
-                    <input type="text" class="form-control" id="pname" name="pname">
+                    <label for="pid" class="form-label">Product Id</label>
+                    <input type="text" class="form-control" id="pid" name="id">
                 </div>
                 <div class="mb-3">
                     <label for="category" class="form-label">Category</label>

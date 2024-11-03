@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Oct 27, 2024 at 05:28 PM
+-- Generation Time: Nov 03, 2024 at 08:07 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -40,7 +40,9 @@ CREATE TABLE `categories` (
 
 INSERT INTO `categories` (`id`, `category`, `created_at`, `updated_at`) VALUES
 (1, 'Mouse', '2024-10-21', '2024-10-21'),
-(2, 'Keyboard', '2024-10-21', '2024-10-21');
+(2, 'Keyboard', '2024-10-21', '2024-10-21'),
+(3, 'Monitor', '2024-11-04', '2024-11-04'),
+(4, 'Hard Disk', '2024-11-04', '2024-11-04');
 
 -- --------------------------------------------------------
 
@@ -53,7 +55,9 @@ CREATE TABLE `inventories` (
   `name` varchar(100) NOT NULL,
   `category` varchar(100) NOT NULL,
   `unit_price` float NOT NULL,
+  `sell_price` float NOT NULL,
   `quantity` int NOT NULL,
+  `warranty` date NOT NULL,
   `created_at` date NOT NULL,
   `updated_at` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -62,14 +66,9 @@ CREATE TABLE `inventories` (
 -- Dumping data for table `inventories`
 --
 
-INSERT INTO `inventories` (`id`, `name`, `category`, `unit_price`, `quantity`, `created_at`, `updated_at`) VALUES
-(11111, 'rdtyt', 'keyboard', 576547, 56785, '2024-10-19', '2024-10-19'),
-(11117, 'fghfgj', 'keyboard', 2839290, 5, '2024-10-19', '2024-10-25'),
-(11123, '547547', 'keyboard', 45747, 457457, '2024-10-19', '2024-10-19'),
-(11125, 'fghfh', 'keyboard', 7568, 8568, '2024-10-19', '2024-10-19'),
-(11127, 'fsdf', 'Mouse', 48.3333, 12, '2024-10-20', '2024-10-25'),
-(11128, 'dfhf', 'Mouse', 5, 5, '2024-10-25', '2024-10-25'),
-(11129, '5u', 'Mouse', 9, 0, '2024-10-25', '2024-10-25');
+INSERT INTO `inventories` (`id`, `name`, `category`, `unit_price`, `sell_price`, `quantity`, `warranty`, `created_at`, `updated_at`) VALUES
+(11134, 'fj', 'Mouse', 475, 570, 58658, '2024-11-28', '2024-11-03', '2024-11-03'),
+(11135, 'hfgjh', 'Mouse', 67, 80.4, 687, '2024-11-29', '2024-11-03', '2024-11-03');
 
 -- --------------------------------------------------------
 
@@ -101,14 +100,6 @@ CREATE TABLE `orders` (
   `updated_at` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Dumping data for table `orders`
---
-
-INSERT INTO `orders` (`id`, `pname`, `cname`, `category`, `unit_sell`, `quantity`, `added_by`, `created_at`, `updated_at`) VALUES
-(3, '5u', 't', 'Mouse', 6, 3, 'admin', '2024-10-25', '2024-10-25'),
-(4, '5u', '356', 'Mouse', 3463, 1, 'admin', '2024-10-25', '2024-10-25');
-
 -- --------------------------------------------------------
 
 --
@@ -132,14 +123,23 @@ CREATE TABLE `purchases` (
 --
 
 INSERT INTO `purchases` (`id`, `supplier`, `unit_buy`, `quantity`, `added_by`, `created_at`, `updated_at`, `pname`, `category`) VALUES
-(2, 'hhjk', 6779, 69769, 'admin', '2024-10-25', '2024-10-25', 'yj', 'Mouse'),
-(3, 'gfhg', 5, 5, 'admin', '2024-10-25', '2024-10-25', 'fghfgj', 'Keyboard'),
-(4, 'ghh', 55, 6, 'admin', '2024-10-25', '2024-10-25', 'fsdf', 'Mouse'),
-(5, 'ryg', 10, 2, 'admin', '2024-10-25', '2024-10-25', '5u', 'Mouse'),
-(6, '36f', 8, 2, 'admin', '2024-10-25', '2024-10-25', '5u', 'Mouse'),
-(7, '36f', 8, 2, 'admin', '2024-10-25', '2024-10-25', '5u', 'Keyboard'),
-(8, '36f', 8, 2, 'admin', '2024-10-25', '2024-10-25', '5u', 'Mouse'),
-(9, 'gfhg', 5, 5, 'admin', '2024-10-25', '2024-10-25', 'dfhf', 'Mouse');
+(18, 'fgjhn', 67, 687, 'admin', '2024-11-03', '2024-11-03', 'hfgjh', 'Mouse');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `records`
+--
+
+CREATE TABLE `records` (
+  `id` int NOT NULL,
+  `buy` float NOT NULL,
+  `sell` float NOT NULL,
+  `buyq` int NOT NULL,
+  `sellq` int NOT NULL,
+  `created_at` date NOT NULL,
+  `updated_at` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -157,13 +157,6 @@ CREATE TABLE `suppliers` (
   `updated_at` date NOT NULL,
   `name` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Dumping data for table `suppliers`
---
-
-INSERT INTO `suppliers` (`id`, `product`, `category`, `phone`, `email`, `created_at`, `updated_at`, `name`) VALUES
-(1, 'fsdf', 'Keyboard', '3466', 'fgj@fjk.com', '2024-10-20', '2024-10-20', 'dhh');
 
 -- --------------------------------------------------------
 
@@ -225,6 +218,12 @@ ALTER TABLE `purchases`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `records`
+--
+ALTER TABLE `records`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `suppliers`
 --
 ALTER TABLE `suppliers`
@@ -244,13 +243,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `inventories`
 --
 ALTER TABLE `inventories`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11130;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11136;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -262,13 +261,13 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `purchases`
 --
 ALTER TABLE `purchases`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `suppliers`

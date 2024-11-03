@@ -13,6 +13,8 @@ use App\Http\Middleware\AdminCheck;
 use App\Http\Middleware\AuthCheck;
 use App\Http\Middleware\LoginCheck;
 use App\Http\Controllers\PurchaseController;
+use App\Http\Controllers\ExpiredInventoryController;
+use App\Http\Controllers\InvoiceController;
 
 Route::middleware(LoginCheck::class)->group(function () {
     Route::get('login',[LoginController::class,'index']);
@@ -32,6 +34,8 @@ Route::middleware([AuthCheck::class])->group(function () {
     Route::put('edit-inventory/{id}', [InventoryController::class, 'UpdateInventory']);
     Route::get('inventory/search', [InventoryController::class, 'search']);
 
+    Route::get('expired', [ExpiredInventoryController::class, 'index']);
+
     Route::get('purchase', [PurchaseController::class, 'index']);
     Route::post('purchase', [PurchaseController::class, 'addPurchase']);
 
@@ -47,6 +51,9 @@ Route::middleware([AuthCheck::class])->group(function () {
 
     Route::get('profile/{username}',[ProfileController::class,'index']);
     Route::get('logout',[LoginController::class,'logout']);
+
+    Route::get('/invoice/{orderId}/pdf', [InvoiceController::class, 'generateInvoice'])->name('invoice.pdf');
+
 });
 
 

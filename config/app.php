@@ -58,6 +58,15 @@ return [
     'url' => env('APP_URL', 'http://localhost'),
 
     'asset_url' => env('ASSET_URL'),
+    
+    'providers' => [
+        Barryvdh\DomPDF\ServiceProvider::class,
+    ],
+    'aliases' => [
+        'PDF' => Barryvdh\DomPDF\Facade\Pdf::class,
+    ],
+
+
 
     /*
     |--------------------------------------------------------------------------

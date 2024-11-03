@@ -19,7 +19,9 @@ class InventoryController extends Controller
         $inventory->name = $request->name;
         $inventory->category = $request->category;
         $inventory->unit_price = $request->unit_price;
+        $inventory->sell_price = $request->unit_price+$request->unit_price*0.2;
         $inventory->quantity = $request->quantity;
+        $inventory->warranty = $request->warranty;
         $inventory->save();
         return redirect('inventory');
     }
@@ -37,15 +39,21 @@ class InventoryController extends Controller
         $inventory->name = $request->name;
         $inventory->category = $request->category;
         $inventory->unit_price = $request->unit_price;
+        $inventory->sell_price = $request->sell_price;
         $inventory->quantity = $request->quantity;
+        $inventory->warranty = $request->warranty;
         $inventory->save();
         return redirect('inventory');
     }
 
     function search(Request $request){
+        $today = date('Y-m-d');
         $inventory = Inventory::where('name','like',"%$request->search%")
         ->orWhere('category','like',"%{$request->search}%")
         ->get();
+        if(strcasecmp($request->search,'expired')==0){
+            $inventory = Inventory::where('warranty','<',$today)->get();
+        }
         return view('inventory',['inventory'=>$inventory,'search'=>$request->search,'category'=>Category::all()]);
     }
 }

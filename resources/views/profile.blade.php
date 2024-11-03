@@ -12,11 +12,12 @@
                     <div class="user-img">
                         <img src="{{asset('img/sadnur.jpg')}}" alt="">
                     </div>
-                    <h2>Sadnur Islam</h2>
-                    <p>Email: sadnurislam2000@gmail.com</p>
-                    <p>Phone: 01700000000</p>
-                    <p>Role: Admin</p>
-                    <button class="btn btn-secondary">Logout</button>
+                    <br>
+                    <p>Name: {{$user->name}} </p>
+                    <p>Email: {{$user->email}}</p>
+                    <p>Phone: {{$user->phone}}</p>
+                    <p>Role: {{$user->role}}</p>
+                    <a class="btn btn-secondary" href="{{'/logout'}}">Logout</a>
                 </div>
             </div>
         </div>

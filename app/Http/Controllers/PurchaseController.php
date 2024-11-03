@@ -24,25 +24,16 @@ class PurchaseController extends Controller
         $purchase->supplier = $req->supplier;
         $purchase->added_by = session('username');
         $purchase->save();
-        $inventory = Inventory::where('name',$req->pname)->first();
-        if($inventory){
-            $prev_price = $inventory->unit_price * $inventory->quantity;
-            $new_price = $req->unit_buy * $req->quantity;
-            $avg_price = ($prev_price + $new_price) / ($inventory->quantity + $req->quantity);
-            if($inventory->quantity  == 0){
-                $avg_price = $req->unit_buy;
-            }
-            $inventory->unit_price = $avg_price;
-            $inventory->quantity = $inventory->quantity + $req->quantity;
-            $inventory->save();
-        }else{
-            $inventory = new Inventory;
-            $inventory->name = $req->pname;
-            $inventory->category = $req->category;
-            $inventory->unit_price = $req->unit_buy;
-            $inventory->quantity = $req->quantity;
-            $inventory->save();
-        }
+
+        $inventory = new Inventory();
+        $inventory->name = $req->pname;
+        $inventory->category = $req->category;
+        $inventory->unit_price = $req->unit_buy;
+        $inventory->sell_price = $req->unit_buy+$req->unit_buy*0.2;
+        $inventory->quantity = $req->quantity;
+        $inventory->warranty = $req->expiry_date;
+        $inventory->save();
+
         return redirect('purchase');
     }
 }

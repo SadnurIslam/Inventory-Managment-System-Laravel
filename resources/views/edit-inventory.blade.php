@@ -41,8 +41,12 @@
                     </select>
                 </div>
                 <div class="mb-3">
-                    <label for="buyingPrice" class="form-label">Unit Price</label>
+                    <label for="buyingPrice" class="form-label">Actual Price</label>
                     <input type="text" class="form-control" id="buyingPrice" name="unit_price" value="{{$inventory->unit_price}}" required>
+                </div>
+                <div class="mb-3">
+                    <label for="buyingPrice" class="form-label">Sell Price</label>
+                    <input type="text" class="form-control" id="buyingPrice" name="sell_price" value="{{$inventory->sell_price}}" required>
                 </div>
                 <div class="mb-3">
                     <label for="quantity" class="form-label">Quantity</label>
