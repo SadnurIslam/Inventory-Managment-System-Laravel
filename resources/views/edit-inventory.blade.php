@@ -52,6 +52,10 @@
                     <label for="quantity" class="form-label">Quantity</label>
                     <input type="number" class="form-control" id="quantity" name="quantity" value="{{$inventory->quantity}}" required>
                 </div>
+                <div class="mb-3">
+                    <label for="quantity" class="form-label">Warranty</label>
+                    <input type="date" class="form-control" id="quantity" name="expiry_date" value="{{$inventory->warranty}}">
+                </div>
                 <!-- Form Footer -->
     <!-- Submit Button -->
                 <div class="d-grid">

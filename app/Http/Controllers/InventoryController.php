@@ -41,7 +41,7 @@ class InventoryController extends Controller
         $inventory->unit_price = $request->unit_price;
         $inventory->sell_price = $request->sell_price;
         $inventory->quantity = $request->quantity;
-        $inventory->warranty = $request->warranty;
+        $inventory->warranty = $request->expiry_date;
         $inventory->save();
         return redirect('inventory');
     }
