@@ -10,7 +10,7 @@
                     <h2>User Profile</h2>
                     <br>
                     <div class="user-img">
-                        <img src="{{asset('img/sadnur.jpg')}}" alt="">
+                        <img src="{{asset('img/user.png')}}" alt="">
                     </div>
                     <br>
                     <p>Name: {{$user->name}} </p>

@@ -65,10 +65,27 @@ CREATE TABLE `inventories` (
 --
 -- Dumping data for table `inventories`
 --
-
 INSERT INTO `inventories` (`id`, `name`, `category`, `unit_price`, `sell_price`, `quantity`, `warranty`, `created_at`, `updated_at`) VALUES
-(11134, 'fj', 'Mouse', 475, 570, 58658, '2024-11-28', '2024-11-03', '2024-11-03'),
-(11135, 'hfgjh', 'Mouse', 67, 80.4, 687, '2024-11-29', '2024-11-03', '2024-11-03');
+(11166, 'Logitech K120 Keyboard', 'Keyboard', 350, 450, 200, '2025-10-15', '2024-11-03', '2024-11-03'),
+(11167, 'HP Pavilion Wireless Keyboard', 'Keyboard', 800, 950, 150, '2025-11-30', '2024-11-03', '2024-11-03'),
+(11168, 'Razer BlackWidow Elite Gaming Keyboard', 'Keyboard', 1200, 1450, 75, '2026-03-25', '2024-11-03', '2024-11-03'),
+(11169, 'Dell KM117 Wireless Keyboard and Mouse Combo', 'Keyboard', 900, 1100, 90, '2025-12-05', '2024-11-03', '2024-11-03'),
+
+(11170, 'Logitech G502 Gaming Mouse', 'Mouse', 650, 800, 100, '2025-10-10', '2024-11-03', '2024-11-03'),
+(11171, 'HP X200 Wireless Mouse', 'Mouse', 450, 550, 300, '2025-11-02', '2024-11-03', '2024-11-03'),
+(11172, 'Razer DeathAdder Essential', 'Mouse', 700, 850, 120, '2026-01-15', '2024-11-03', '2024-11-03'),
+(11173, 'Apple Magic Mouse 2', 'Mouse', 2000, 2400, 60, '2026-05-20', '2024-11-03', '2024-11-03'),
+
+(11174, 'Samsung 24-inch Curved Monitor', 'Monitor', 12000, 14000, 50, '2026-08-01', '2024-11-03', '2024-11-03'),
+(11175, 'Dell UltraSharp 27-inch Monitor', 'Monitor', 18000, 21000, 30, '2027-01-01', '2024-11-03', '2024-11-03'),
+(11176, 'LG 29-inch UltraWide Monitor', 'Monitor', 15000, 17000, 45, '2026-10-15', '2024-11-03', '2024-11-03'),
+(11177, 'ASUS TUF Gaming 32-inch Monitor', 'Monitor', 22000, 25000, 25, '2026-12-25', '2024-11-03', '2024-11-03'),
+
+(11178, 'Seagate Barracuda 1TB HDD', 'Hard Disk', 2500, 3000, 200, '2025-12-31', '2024-11-03', '2024-11-03'),
+(11179, 'WD Blue 500GB HDD', 'Hard Disk', 1500, 1800, 150, '2025-10-20', '2024-11-03', '2024-11-03'),
+(11180, 'Toshiba Canvio Basics 2TB Portable HDD', 'Hard Disk', 4000, 4500, 100, '2026-03-15', '2024-11-03', '2024-11-03'),
+(11181, 'Hitachi Ultrastar 4TB Enterprise HDD', 'Hard Disk', 7500, 8500, 80, '2026-08-30', '2024-11-03', '2024-11-03');
+
 
 -- --------------------------------------------------------
 
