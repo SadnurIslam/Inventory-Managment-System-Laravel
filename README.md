@@ -11,8 +11,8 @@ A web-based **Inventory Management System** built using **HTML**, **CSS**, **Boo
   - Manage expired products with offer prices.
 - **User Management**: Admins can manage warehouse staff access.
 - **Dashboard**: Visualize inventory insights using **Chart.js**.
-- **Reports**: Generate report for specific time range **Chart.js**.
-- **Orders**: Manage orders and geneate invoice **Chart.js**.
+- **Reports**: Generate report for specific time range.
+- **Orders**: Manage orders and generate invoice.
 - **AJAX Filtering**: Dynamic updates without page reloads.
 
 ## Technologies Used
