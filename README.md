@@ -1,79 +1,55 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>README - Inventory Management System</title>
-</head>
-<body>
-    <h1>Inventory Management System</h1>
-    <p>
-        A web-based <strong>Inventory Management System</strong> built using <strong>HTML</strong>, <strong>CSS</strong>, 
-        <strong>Bootstrap</strong>, <strong>JavaScript</strong>, <strong>Laravel</strong>, and <strong>MySQL</strong>. 
-        This system enables efficient management of inventory data, including adding, editing, filtering, and deleting items. 
-        It was developed as a project for the <strong>Software Engineering Lab</strong> course.
-    </p>
+# Inventory Management System
 
-    <h2>Features</h2>
-    <ul>
-        <li><strong>User Roles:</strong> Admin and Warehouse Staff with distinct permissions.</li>
-        <li><strong>Inventory Management:</strong>
-            <ul>
-                <li>Add, edit, and delete items.</li>
-                <li>Filter items by category, warehouse, and expiration status.</li>
-                <li>Manage expired products with offer prices.</li>
-            </ul>
-        </li>
-        <li><strong>User Management:</strong> Admins can manage warehouse staff access.</li>
-        <li><strong>Dashboard:</strong> Visualize inventory insights using <strong>Chart.js</strong>.</li>
-        <li><strong>AJAX Filtering:</strong> Dynamic updates without page reloads.</li>
-    </ul>
+A web-based **Inventory Management System** built using **HTML**, **CSS**, **Bootstrap**, **JavaScript**, **Laravel**, and **MySQL**. This system enables efficient management of inventory data, including adding, editing, filtering, and deleting items. It was developed as a project for the **Software Engineering Lab** course.
 
-    <h2>Technologies Used</h2>
-    <ul>
-        <li><strong>Frontend:</strong> HTML, CSS, Bootstrap, JavaScript</li>
-        <li><strong>Backend:</strong> Laravel (PHP Framework)</li>
-        <li><strong>Database:</strong> MySQL</li>
-        <li><strong>Charts:</strong> Chart.js</li>
-    </ul>
+## Features
 
-    <h2>Installation</h2>
-    <ol>
-        <li>Clone the repository:
-            <pre><code>git clone https://github.com/your-username/inventory-management-system.git</code></pre>
-        </li>
-        <li>Navigate to the project directory:
-            <pre><code>cd inventory-management-system</code></pre>
-        </li>
-        <li>Install dependencies:
-            <pre><code>composer install</code></pre>
-        </li>
-        <li>Configure the <code>.env</code> file with your database credentials.</li>
-        <li>Run database migrations:
-            <pre><code>php artisan migrate</code></pre>
-        </li>
-        <li>Start the development server:
-            <pre><code>php artisan serve</code></pre>
-        </li>
-        <li>Open the app in your browser: <a href="http://localhost:8000" target="_blank">http://localhost:8000</a></li>
-    </ol>
+- **User Roles**: Admin and Warehouse Staff with distinct permissions.
+- **Inventory Management**:
+  - Add, edit, and delete items.
+  - Filter items by category, warehouse, and expiration status.
+  - Manage expired products with offer prices.
+- **User Management**: Admins can manage warehouse staff access.
+- **Dashboard**: Visualize inventory insights using **Chart.js**.
+- **AJAX Filtering**: Dynamic updates without page reloads.
 
-    <h2>Usage</h2>
-    <p>Once the application is running, you can:</p>
-    <ul>
-        <li>Access the dashboard to view a summary of inventory.</li>
-        <li>Manage inventory items, including adding, editing, and deleting.</li>
-        <li>Filter inventory items dynamically by category or expiration status.</li>
-        <li>Manage warehouse staff access (Admin only).</li>
-    </ul>
+## Technologies Used
 
-    <h2>Screenshots</h2>
-    <p><strong>Dashboard:</strong></p>
-    <img src="https://via.placeholder.com/800x400?text=Dashboard" alt="Dashboard Screenshot">
-    <p><strong>Inventory Page:</strong></p>
-    <img src="https://via.placeholder.com/800x400?text=Inventory+Page" alt="Inventory Page Screenshot">
+- **Frontend**: HTML, CSS, Bootstrap, JavaScript
+- **Backend**: Laravel (PHP Framework)
+- **Database**: MySQL
+- **Charts**: Chart.js
 
-    <h2>Credits</h2>
-    <p>Developed by <strong>Your Name</strong>.</p>
-</body>
-</html>
+## Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/your-username/inventory-management-system.git
+   cd inventory-management-system
+
+    Install dependencies:
+
+composer install
+npm install
+
+Configure the .env file with your database credentials:
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=your_database
+DB_USERNAME=your_username
+DB_PASSWORD=your_password
+
+Run database migrations:
+
+php artisan migrate
+
+Start the development server:
+
+php artisan serve
+
+Open the app in your browser:
+
+http://localhost:8000
