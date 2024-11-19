@@ -66,4 +66,4 @@
     <img src="https://via.placeholder.com/800x400?text=Inventory+Page" alt="Inventory Page Screenshot">
 
     <h2>Credits</h2>
-    <p>Developed by <strong>Sadnur Islam</strong>.</p>
+    <p>Developed by <strong>Your Name</strong>.</p>
