@@ -1,4 +1,12 @@
-<h1>Inventory Management System</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>README - Inventory Management System</title>
+</head>
+<body>
+    <h1>Inventory Management System</h1>
     <p>
         A web-based <strong>Inventory Management System</strong> built using <strong>HTML</strong>, <strong>CSS</strong>, 
         <strong>Bootstrap</strong>, <strong>JavaScript</strong>, <strong>Laravel</strong>, and <strong>MySQL</strong>. 
@@ -67,3 +75,5 @@
 
     <h2>Credits</h2>
     <p>Developed by <strong>Your Name</strong>.</p>
+</body>
+</html>
