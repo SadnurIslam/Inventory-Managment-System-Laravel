@@ -1,6 +1,6 @@
 @extends('base')
 @section('title')
-    Ztech | Details
+    Ztech | Inventory Details
 @endsection
 @section('content')
 <div class="container mt-2">

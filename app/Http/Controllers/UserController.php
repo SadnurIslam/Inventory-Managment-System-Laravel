@@ -9,55 +9,77 @@ use Illuminate\Validation\Rules\Password;
 
 class UserController extends Controller
 {
-    public function deleteUser(Request $request)
-    {
-        User::where('username', $request->delete)->delete();
-        return redirect('user')->with('message', 'User deleted successfully');
+
+    public function index(){
+        if(request()->has('search')){
+            $search = request('search');
+            $users = User::where('name','LIKE','%'. $search .'%')
+            ->orWhere('email','LIKE','%'. $search .'%')
+            ->orWhere('phone','LIKE','%'. $search .'%')
+            ->orWhere('role','LIKE','%'. $search .'%')
+            ->orWhere('username','LIKE','%'. $search .'%')
+            ->paginate(10);
+            return view('user',['users'=>$users]);
+        }
+        $users = User::orderBy("created_at","desc")->paginate(10);
+        return view("user",["users"=>$users]);
     }
-    public function getUser()
+
+    public function deleteUser($id)
     {
-        $users = User::all();
-        return view('user', ['users' => $users]);
+        User::destroy($id);
+        return redirect()->route('users.index');
     }
+
     public function addUser(Request $request)
     {
-        if(isset($request->edit)){
-            return redirect('user')->with('message', 'User added successfully');
-        }
-        if(isset($request->delete)){
-            User::where('username', $request->delete)->delete();
-            return redirect('dashboard')->with('message', 'User deleted successfully');
-        }
+        return view('add-user');
+    }
+
+    public function storeUser(Request $request){
+        $request->validate([
+            'name'=>'required|string|max:255',
+            'email'=>'required|email|unique:users',
+            'username'=>'required|string|max:255|unique:users',
+            'password'=> 'required|string|confirmed|min:5',
+            'role'=> 'required|string',
+            'phone'=> 'required|numeric|digits_between:9,15',
+        ]);
+
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->password = Hash::make($request->password);  // Hash the password
         $user->username = $request->username;
-        $user->phone = $request->phone;
+        $user->password = Hash::make($request->password);
         $user->role = $request->role;
-        $user->save();
-        return redirect('user')->with('message', 'User added successfully');
-    }
-    public function editUser($id)
-    {
-        $user = User::where('id', $id)->first();
-        return view('edit-user', ['user' => $user]);
-    }
-    public function updateUser(Request $request, $id)
-    {
-        $user = User::find($id);
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->username = $request->username;
         $user->phone = $request->phone;
-        $user->role = $request->role;
+        $user->added_by = session('username') ?? 'admin';
         $user->save();
-        return redirect('user');
+        return redirect()->route('users.index');
     }
 
-    public function search(Request $request)
+    public function editUser($id)
     {
-        $users = User::where('name', 'like', '%'.$request->search.'%')->get();
-        return view('user', ['users' => $users]);
+        $user = User::find($id);
+        return view('edit-user', ['user' => $user]);
     }
+    public function updateUser(Request $request)
+    {
+        $request->validate([
+            'name'=>'required|string|max:255',
+            'email'=>'required|email|unique:users,email,'.$request->id,
+            'role'=> 'required|string',
+            'phone'=> 'required|numeric|digits_between:9,15',
+        ]);
+
+        $user = User::find($request->id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->role = $request->role;
+        $user->save();
+        return redirect()->route('users.index');
+    }
+
+
 }

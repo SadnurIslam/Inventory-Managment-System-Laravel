@@ -25,15 +25,15 @@
                         <div class="side-bar">
                             <ul>
                                 <li><a href="{{url('dashboard')}}"><i class="fa-solid fa-house"></i>&nbsp&nbsp&nbspDashboard</a></li>
-                                <li><a href="{{url('inventory')}}"><i class="fa-solid fa-cart-flatbed"></i>&nbsp&nbsp&nbspInventory</a></li>
-                                <li><a href="{{url('expired')}}"><i class="fa-solid fa-cart-plus"></i>&nbsp&nbsp&nbspExpired</a></li>
+                                <li><a href="{{route('inventory.index')}}"><i class="fa-solid fa-cart-flatbed"></i>&nbsp&nbsp&nbspInventory</a></li>
+                                <li><a href="{{route('inventory.expired')}}"><i class="fa-solid fa-cart-plus"></i>&nbsp&nbsp&nbspExpired</a></li>
                                 {{-- <li><a href="{{url('report')}}"><i class="fa-solid fa-chart-simple"></i> &nbsp&nbsp&nbspReports</a></li> --}}
-                                <li><a href="{{url('purchase')}}"><i class="fa-solid fa-boxes-packing"></i>&nbsp&nbspPurchases</a></li>
-                                <li><a href="{{url('order')}}"><i class="fa-solid fa-cart-shopping"></i>&nbsp&nbsp&nbspOrders</a></li>
-                                <li><a href="{{url('supplier')}}"><i class="fa-solid fa-boxes-packing"></i>&nbsp&nbspSuppliers</a></li>
-                                {{-- @if(session('role') == 'admin') --}}
-                                <li><a href="{{url('user')}}"><i class="fa-solid fa-user"></i>&nbsp&nbsp&nbspManage User </a></li>
-                                {{-- @endif --}}
+                                <li><a href="{{route('purchase.index')}}"><i class="fa-solid fa-boxes-packing"></i>&nbsp&nbspPurchases</a></li>
+                                <li><a href="{{route('order.index')}}"><i class="fa-solid fa-cart-shopping"></i>&nbsp&nbsp&nbspOrders</a></li>
+                                <li><a href="{{route('supplier.index')}}"><i class="fa-solid fa-boxes-packing"></i>&nbsp&nbspSuppliers</a></li>
+                                @if(session('role') == 'admin')
+                                    <li><a href="{{route('users.index')}}"><i class="fa-solid fa-user"></i>&nbsp&nbsp&nbspManage User </a></li>
+                                @endif
                             </ul>
                         </div>
                     </div>
@@ -65,7 +65,7 @@
                                             
                                             </button>
                                             <ul class="dropdown-menu">
-                                                <li><a class="dropdown-item" href="{{'/profile/'.session('username')}}">Profile</a></li>
+                                                <li><a class="dropdown-item" href="{{route('profile',session('username'))}}">Profile</a></li>
                                                 <li><hr class="dropdown-divider"></li>
                                                 <li><a class="dropdown-item" href="{{'/logout'}}">Logout</a></li>
                                             </ul>

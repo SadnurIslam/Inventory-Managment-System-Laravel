@@ -1,6 +1,6 @@
 @extends('base')
 @section('title')
-    Ztech | Inventory
+    Ztech | Expired Inventory
 @endsection
 @section('content')
     <main class="p-3 supplier">
@@ -8,7 +8,7 @@
             <div class="col-12">
                 <div class="row py-3">
                     <div class="col-3">
-                        <h2 class="color-lightblue supplier-h2">Inventory</h2>
+                        <h2 class="color-lightblue supplier-h2">Expired Inventory</h2>
                     </div>
                     <div class="col-9">
                         <div class="row">

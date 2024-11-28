@@ -1,6 +1,6 @@
 @extends('base')
 @section('title')
-    Ztech | Add Inventory
+    Ztech | New Order
 @endsection
 @section('content')
 <div class="container mt-2">
@@ -10,7 +10,7 @@
     <div class="card-header bg-info text-white">
         <div class="row py-2">
             <div class="col-4">
-                <a href="{{url()->previous()}}" class="btn btn-secondary">Back</a>
+                <a href="{{route('order.index')}}" class="btn btn-secondary">Back</a>
             </div>
             <div class="col-8">
                 <h4 class="text-left">Create New Order</h4>
@@ -22,20 +22,9 @@
                 @csrf
                 <!-- Name -->
                 <div class="mb-3">
-                    <label for="productName" class="form-label">Product Name</label>
-                    <input type="text" class="form-control" id="productName" name="product_name"  value="{{old('product_name')}}">
-                    @error('product_name')
-                        <span class="text-danger">{{$message}}</span>
-                    @enderror
-                </div>
-                <div class="mb-3">
-                    <label for="category" class="form-label">Category</label>
-                    <select class="form-select" id="category" name="category_name" value="{{old('category_name')}}">
-                        @foreach ($category as $cat)
-                            <option value="{{$cat->category_name}}" selected>{{($cat->category_name)}}</option>
-                        @endforeach
-                    </select>
-                    @error('category_name')
+                    <label for="productName" class="form-label">Product ID</label>
+                    <input type="text" class="form-control" id="productName" name="product_id"  value="{{old('product_id')}}">
+                    @error('product_id')
                         <span class="text-danger">{{$message}}</span>
                     @enderror
                 </div>
@@ -71,9 +60,12 @@
                     <label for="quantity" class="form-label">Status</label>
                     <select class="form-select" name="status" id="">
                         <option value="returned">Returned</option>
-                        <option value="pending">Pending</option>
-                        <option value="delivered" selected>Delivered</option>
+                        <option value="pending" selected>Pending</option>
+                        <option value="delivered">Delivered</option>
                     </select>
+                    @error('status')
+                        <span class="text-danger">{{$message}}</span>
+                    @enderror
                 </div>
                 <div class="d-grid">
                     <button type="submit" class="btn btn-primary">Create Order</button>

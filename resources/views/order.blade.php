@@ -61,10 +61,10 @@
                                 @elseif($order->status == 'delivered')
                                     <span class="badge bg-success">Delivered</span>
                                 @else
-                                    <span class="badge bg-danger">Return</span>
+                                    <span class="badge bg-danger">Returned</span>
                                 @endif
                             </td>
-                            <td><a class="text-decoration-none" href="{{'/invoice/'.$order->id.'/pdf'}}">download</a></td>
+                            <td><a class="text-decoration-none" href="{{'/invoice/order/'.$order->id.'/pdf'}}">download</a></td>
                             <td class="action">
                                     <a class="btn btn-primary" href="{{route('order.edit',$order->id)}}" ><i class="fa-solid fa-pen-to-square"></i></a>
                                     <form class = "d-inline-block" action="{{route('order.delete',$order->id)}}" method="post" onsubmit="return confirm('Are you sure?')">

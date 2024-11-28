@@ -32,14 +32,12 @@ class InventoryController extends Controller
 
         $request->validate([
             'product_name'=>'required',
-            'unit_price'=>'required|decimal:0,10|min:0',
+            'unit_price'=>'required|integer|min:0',
             'category_name'=>'required',
             'quantity'=>'required|integer|min:0',
             'expiry_date'=>'required',
             'supplier_name'=>'required',
             'supplier_phone'=>'required|numeric|digits_between:9,15',
-
-            
         ]);
 
         $inventory = new Inventory();
@@ -56,7 +54,7 @@ class InventoryController extends Controller
         return redirect()->route('inventory.index');
     }
     function deleteInventory($id){
-        $inventory = Inventory::destroy($id);
+        Inventory::destroy($id);
         return redirect()->route('inventory.index');
     }
 
@@ -93,16 +91,6 @@ class InventoryController extends Controller
         return redirect()->route('inventory.index');
     }
 
-    function search(Request $request){
-        $today = date('Y-m-d');
-        $inventory = Inventory::where('name','like',"%$request->search%")
-        ->orWhere('category','like',"%{$request->search}%")
-        ->get();
-        if(strcasecmp($request->search,'expired')==0){
-            $inventory = Inventory::where('warranty','<',$today)->get();
-        }
-        return view('inventory',['inventory'=>$inventory,'search'=>$request->search,'category'=>Category::all()]);
-    }
 
     function showInventory($id){
         $inventory = Inventory::findOrFail($id);

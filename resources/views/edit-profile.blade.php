@@ -1,6 +1,6 @@
 @extends('base')
 @section('title')
-    Ztech | Update UserInfo
+    Ztech | Update Profile
 @endsection
 @section('content')
 <div class="container mt-2">
@@ -10,18 +10,17 @@
     <div class="card-header bg-info text-white">
         <div class="row py-2">
             <div class="col-4">
-                <a href="{{route('users.index')}}" class="btn btn-secondary">Back</a>
+                <a href="{{route('profile',session('username'))}}" class="btn btn-secondary">Back</a>
             </div>
             <div class="col-8">
-                <h4 class="text-left">Update User Info</h4>
+                <h4 class="text-left">Update Profile</h4>
             </div>
         </div>
     </div>
     <div class="card-body px-5">
-    <form action="{{route('users.update')}}" method="post">
+    <form action="{{route('profile.update')}}" method="post">
                 @csrf
                 @method('put')
-                <input type="hidden" name="id" value="{{$user->id}}">
                 <div class="mb-3">
                     <label for="buyingPrice" class="form-label">Name</label>
                     <input type="text" class="form-control" id="buyingPrice" name="name"  value="{{old('name',$user->name)}}">
@@ -38,18 +37,22 @@
                 </div>
                 <div class="mb-3">
                     <label for="quantity" class="form-label">Phone</label>
-                    <input type="text" class="form-control" id="quantity" name="phone"  value="{{old('phone',$user->phone)}}">
+                    <input type="text" class="form-control" id="quantity" name="phone"  value="{{old('phone',session('phone',$user->phone))}}">
                     @error('phone')
                         <span class="text-danger">{{$message}}</span>
                     @enderror
                 </div>
                 <div class="mb-3">
-                    <label for="quantity" class="form-label">Role</label>
-                    <select class="form-select" name="role" id="">
-                        <option value="admin" @if($user->role=='admin') selected @endif>Admin</option>
-                        <option value="staff" @if($user->role=='staff') selected @endif>Staff</option>
-                    </select>
-                    @error('role')
+                    <label for="quantity" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="quantity" name="password">
+                    @error('password')
+                        <span class="text-danger">{{$message}}</span>
+                    @enderror
+                </div>
+                <div class="mb-3">
+                    <label for="quantity" class="form-label">Confirm Password</label>
+                    <input type="password" class="form-control" id="quantity" name="password_confirmation" >
+                    @error('password_confirmation')
                         <span class="text-danger">{{$message}}</span>
                     @enderror
                 </div>

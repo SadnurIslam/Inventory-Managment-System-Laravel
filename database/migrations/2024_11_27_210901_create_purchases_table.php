@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('product_name');
             $table->string('category_name');
-            $table->decimal('unit_price', 8, 2);
+            $table->integer('unit_price');
             $table->integer('quantity');
             $table->string('supplier_name');
             $table->string('supplier_phone');

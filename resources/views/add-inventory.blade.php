@@ -10,7 +10,7 @@
     <div class="card-header bg-info text-white">
         <div class="row py-2">
             <div class="col-4">
-                <a href="{{url()->previous()}}" class="btn btn-secondary">Back</a>
+                <a href="{{route('inventory.index')}}" class="btn btn-secondary">Back</a>
             </div>
             <div class="col-8">
                 <h4 class="text-left">Add New Product</h4>
