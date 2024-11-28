@@ -24,8 +24,7 @@ Route::middleware(LoginCheck::class)->group(callback: function () {
 
 Route::middleware([AuthCheck::class])->group(function () {
 
-    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
-    Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/', [DashboardController::class, 'dashboard'])->name('dashboard.index');
 
     Route::get('inventory', [InventoryController::class, 'index'])->name('inventory.index');
     Route::get('inventory/add', [InventoryController::class, 'addInventory'])->name('inventory.add');

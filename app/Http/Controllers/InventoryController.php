@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Inventory;
 use App\Models\Category;
+use App\Models\Purchase;
 class InventoryController extends Controller
 {
     //
@@ -50,6 +51,15 @@ class InventoryController extends Controller
         $inventory->supplier_phone = $request->supplier_phone;
         $inventory->added_by = session('username') ?? 'admin';
         $inventory->save(); 
+
+        $purchase = new Purchase(); 
+        $purchase->product_name = $request->product_name;
+        $purchase->unit_price = $request->unit_price;
+        $purchase->quantity = $request->quantity;
+        $purchase->category_name = $request->category_name;
+        $purchase->supplier_name = $request->supplier_name;
+        $purchase->supplier_phone = $request->supplier_phone;
+        $purchase->save();
 
         return redirect()->route('inventory.index');
     }

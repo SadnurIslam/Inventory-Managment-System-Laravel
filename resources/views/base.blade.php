@@ -24,7 +24,7 @@
                     <div class="col-12 px-4 py-3">
                         <div class="side-bar">
                             <ul>
-                                <li><a href="{{url('dashboard')}}"><i class="fa-solid fa-house"></i>&nbsp&nbsp&nbspDashboard</a></li>
+                                <li><a href="{{route('dashboard.index')}}"><i class="fa-solid fa-house"></i>&nbsp&nbsp&nbspDashboard</a></li>
                                 <li><a href="{{route('inventory.index')}}"><i class="fa-solid fa-cart-flatbed"></i>&nbsp&nbsp&nbspInventory</a></li>
                                 <li><a href="{{route('inventory.expired')}}"><i class="fa-solid fa-cart-plus"></i>&nbsp&nbsp&nbspExpired</a></li>
                                 {{-- <li><a href="{{url('report')}}"><i class="fa-solid fa-chart-simple"></i> &nbsp&nbsp&nbspReports</a></li> --}}
