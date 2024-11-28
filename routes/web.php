@@ -16,52 +16,67 @@ use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\ExpiredInventoryController;
 use App\Http\Controllers\InvoiceController;
 
-Route::middleware(LoginCheck::class)->group(function () {
+// Route::middleware(LoginCheck::class)->group(callback: function () {
     Route::get('login',[LoginController::class,'index']);
     Route::post('login',[LoginController::class,'login']);
-});
+// });
 
 
-Route::middleware([AuthCheck::class])->group(function () {
+// Route::middleware([AuthCheck::class])->group(function () {
 
-    Route::get('/', [DashboardController::class, 'index']);
-    Route::get('dashboard', [DashboardController::class, 'index']);
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-    Route::get('inventory', [InventoryController::class, 'index']);
-    Route::post('inventory', [InventoryController::class, 'addInventory']);
-    Route::get('inventory/delete/{id}', [InventoryController::class, 'deleteInventory']);
-    Route::get('edit-inventory/{id}', [InventoryController::class, 'editInventory']);
-    Route::put('edit-inventory/{id}', [InventoryController::class, 'UpdateInventory']);
-    Route::get('inventory/search', [InventoryController::class, 'search']);
+    Route::get('inventory', [InventoryController::class, 'index'])->name('inventory.index');
+    Route::get('inventory/add', [InventoryController::class, 'addInventory'])->name('inventory.add');
+    Route::post('inventory/store', [InventoryController::class, 'storeInventory'])->name('inventory.store');
+    Route::delete('inventory/delete/{id}', [InventoryController::class, 'deleteInventory'])->name('inventory.delete');
+    Route::get('inventory/edit/{id}', [InventoryController::class, 'editInventory'])->name('inventory.edit');
+    Route::put('inventory/update', [InventoryController::class, 'updateInventory'])->name('inventory.update');
+    Route::get('inventory/show/{id}', [InventoryController::class, 'showInventory'])->name('inventory.show');
+    Route::get('expired',[InventoryController::class,'expiredInventory'])->name('inventory.expired');
 
-    Route::get('expired', [ExpiredInventoryController::class, 'index']);
 
-    Route::get('purchase', [PurchaseController::class, 'index']);
-    Route::post('purchase', [PurchaseController::class, 'addPurchase']);
+    Route::get('order', [OrderController::class, 'index'])->name('order.index');
+    Route::get('order/add', [OrderController::class, 'addOrder'])->name('order.add');
+    Route::post('order/store', [OrderController::class, 'storeOrder'])->name('order.store');
+    Route::delete('order/delete/{id}', [OrderController::class, 'deleteOrder'])->name('order.delete');
+    Route::get('order/edit/{id}', [OrderController::class, 'editOrder'])->name('order.edit');
+    Route::put('order/update', [OrderController::class, 'updateOrder'])->name('order.update');
 
-    Route::get('order', [OrderController::class, 'index']);
-    Route::post('order', [OrderController::class, 'addOrder']);
- 
+    
+    Route::get('supplier', [InventoryController::class, 'index'])->name('supplier.index');
+    Route::get('supplier/add', [InventoryController::class, 'addSupplier'])->name('supplier.add');
+    Route::post('supplier/store', [InventoryController::class, 'storeSupplier'])->name('supplier.store');
+    Route::delete('supplier/delete/{id}', [InventoryController::class, 'deleteSupplier'])->name('supplier.delete');
+    Route::get('supplier/edit/{id}', [InventoryController::class, 'editSupplier'])->name('supplier.edit');
+    Route::put('supplier/update', [InventoryController::class, 'updateSupplier'])->name('supplier.update');
+
+
+    Route::get('user', [InventoryController::class, 'index'])->name('user.index');
+    Route::get('user/add', [InventoryController::class, 'addUser'])->name('user.add');
+    Route::post('user/store', [InventoryController::class, 'storeUser'])->name('user.store');
+    Route::delete('user/delete/{id}', [InventoryController::class, 'deleteUser'])->name('user.delete');
+    Route::get('user/edit/{id}', [InventoryController::class, 'editUser'])->name('user.edit');
+    Route::put('user/update', [InventoryController::class, 'updateUser'])->name('user.update');
+
+
 
     Route::get('report', [ReportController::class, 'index']);
-
-    Route::get('supplier', [SupplierController::class, 'index']);
-    Route::post('supplier', [SupplierController::class, 'addSupplier']);
-
 
     Route::get('profile/{username}',[ProfileController::class,'index']);
     Route::get('logout',[LoginController::class,'logout']);
 
     Route::get('/invoice/{orderId}/pdf', [InvoiceController::class, 'generateInvoice'])->name('invoice.pdf');
 
-});
+// });
 
 
-Route::middleware([AdminCheck::class])->group(function () {
+// Route::middleware([AdminCheck::class])->group(function () {
     Route::post('user',[UserController::class,'addUser']);
     Route::get('user',[UserController::class,'getUser']);
     Route::delete('user', [UserController::class, 'deleteUser']);
     Route::get('edit-user/{id}', [UserController::class, 'editUser']);
     Route::put('edit-user/{id}', [UserController::class, 'UpdateUser']);
     Route::get('user/search', [UserController::class, 'search']);
-});
+// });

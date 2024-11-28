@@ -26,13 +26,14 @@
                             <ul>
                                 <li><a href="{{url('dashboard')}}"><i class="fa-solid fa-house"></i>&nbsp&nbsp&nbspDashboard</a></li>
                                 <li><a href="{{url('inventory')}}"><i class="fa-solid fa-cart-flatbed"></i>&nbsp&nbsp&nbspInventory</a></li>
-                                <li><a href="{{url('report')}}"><i class="fa-solid fa-chart-simple"></i> &nbsp&nbsp&nbspReports</a></li>
+                                <li><a href="{{url('expired')}}"><i class="fa-solid fa-cart-plus"></i>&nbsp&nbsp&nbspExpired</a></li>
+                                {{-- <li><a href="{{url('report')}}"><i class="fa-solid fa-chart-simple"></i> &nbsp&nbsp&nbspReports</a></li> --}}
                                 <li><a href="{{url('purchase')}}"><i class="fa-solid fa-boxes-packing"></i>&nbsp&nbspPurchases</a></li>
                                 <li><a href="{{url('order')}}"><i class="fa-solid fa-cart-shopping"></i>&nbsp&nbsp&nbspOrders</a></li>
                                 <li><a href="{{url('supplier')}}"><i class="fa-solid fa-boxes-packing"></i>&nbsp&nbspSuppliers</a></li>
-                                @if(session('role') == 'admin')
+                                {{-- @if(session('role') == 'admin') --}}
                                 <li><a href="{{url('user')}}"><i class="fa-solid fa-user"></i>&nbsp&nbsp&nbspManage User </a></li>
-                                @endif
+                                {{-- @endif --}}
                             </ul>
                         </div>
                     </div>
