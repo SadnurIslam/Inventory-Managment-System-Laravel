@@ -6,6 +6,8 @@
     <title>@yield('title')</title>
     <link rel="icon" type="image/x-icon" href="{{asset('img/letter-z1.png')}}">
     <!-- Add your CSS files here -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="{{asset('css/custom.css')}}">
 </head>
@@ -62,7 +64,7 @@
                                                 $firstName = explode(' ', $name)[0];
                                                 echo ucfirst($firstName);
                                             @endphp
-                                            
+
                                             </button>
                                             <ul class="dropdown-menu">
                                                 <li><a class="dropdown-item" href="{{route('profile',session('username'))}}">Profile</a></li>
