@@ -80,20 +80,26 @@ class OrderController extends Controller
     function updateOrder(Request $request){
 
         $order = Order::findOrFail($request->id);
+        $inventory = Inventory::where('product_name',$request->product_name)->first();
+        $max_quantity = $inventory->quantity + $request->pre_quantity;
 
         $request->validate([
             'unit_price'=>'required|integer|min:0',
-            'quantity'=>'required|integer|min:0',
+            'quantity'=>'required|integer|min:0|max:'.$max_quantity,
             'customer_name'=>'required',
             'customer_phone'=>'required|numeric|digits_between:9,15',
             'status'=> 'required',
         ]);
 
-        $inventory = Inventory::where('product_name',$request->product_name)->first();
+        
         if($request->status == 'returned'){
             $inventory->quantity = $inventory->quantity + $request->quantity;
             $inventory->save();
 
+        }
+        else{
+            $inventory->quantity = $inventory->quantity+$request->pre_quantity-$request->quantity;
+            $inventory->save();
         }
         
         $order->unit_price = $request->unit_price;

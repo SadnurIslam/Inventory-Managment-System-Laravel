@@ -22,6 +22,7 @@
                 @csrf
                 @method('PUT')
                 <input type="hidden" name="id" value="{{$order->id}}">
+                <input type="hidden" name="pre_quantity" value="{{$order->quantity}}">
                 <input type="hidden" name="product_name" value="{{$order->product_name}}">
                 <div class="mb-3">
                     <label for="buyingPrice" class="form-label">Unit Price</label>
