@@ -23,7 +23,7 @@ Route::middleware(LoginCheck::class)->group(callback: function () {
 
 
 Route::middleware([AuthCheck::class])->group(function () {
-
+    Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard.index');
     Route::get('/', [DashboardController::class, 'dashboard'])->name('dashboard.index');
 
     Route::get('inventory', [InventoryController::class, 'index'])->name('inventory.index');
@@ -43,7 +43,7 @@ Route::middleware([AuthCheck::class])->group(function () {
     Route::get('order/edit/{id}', [OrderController::class, 'editOrder'])->name('order.edit');
     Route::put('order/update', [OrderController::class, 'updateOrder'])->name('order.update');
 
-    
+
     Route::get('supplier', [SupplierController::class, 'index'])->name('supplier.index');
     Route::get('supplier/add', [SupplierController::class, 'addSupplier'])->name('supplier.add');
     Route::post('supplier/store', [SupplierController::class, 'storeSupplier'])->name('supplier.store');
