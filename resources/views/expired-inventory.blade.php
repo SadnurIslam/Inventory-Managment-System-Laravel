@@ -8,17 +8,17 @@
             <div class="col-12">
                 <div class="row py-3">
                     <div class="col-3">
-                        <h2 class="color-lightblue supplier-h2">Expired Inventory</h2>
+                        <h2 class="color-lightblue supplier-h2">Expired</h2>
                     </div>
                     <div class="col-9">
                         <div class="row">
                             <div class="col-9 text-end d-flex">
                             <form action="{{route('inventory.index')}}" method="get" class="w-100"  class="search-form">
                                 <div class="input-group text-end">
-                                
+
                                     <input value="{{request('search')}}" name="search" type="search" class=" header-search" placeholder="Search product/category/expired.." aria-label="Recipient's username" aria-describedby="basic-addon2">
                                     <button class="btn  input-group-text" id="basic-addon2"><i class="fa-solid fa-magnifying-glass"></i></button>
-                                
+
                                 </div>
                             </form>
                             </div>
@@ -27,7 +27,7 @@
                             </div>
                         </div>
                     </div>
-                </div>                
+                </div>
             </div>
             <div class="col-12">
                 <table class="table table-striped">
@@ -52,14 +52,14 @@
                             <td >{{$product->category_name}}</td>
                             <td>{{$product->unit_price}} Tk.</td>
                             <td>{{$product->quantity}}</td>
-                            
+
                             <td>
                                 @if($product->expiry_date<date('Y-m-d'))
                                     <span class="badge bg-danger">Expired</span>
                                 @else
                                     {{$product->expiry_date}}
                                 @endif
-                                
+
                             </td>
                             <td>
                                 @if($product->quantity > 10)
@@ -90,7 +90,7 @@
             </div>
         </div>
     </main>
-    
+
 @endsection
 
 <style>

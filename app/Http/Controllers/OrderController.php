@@ -34,7 +34,7 @@ class OrderController extends Controller
         $request->validate([
             'product_id'=>'required',
         ]);
-        
+
         $inventory = Inventory::findOrFail(id: $request->product_id);
         $max_quantity = $inventory->quantity;
 
@@ -48,8 +48,8 @@ class OrderController extends Controller
             'quantity.max' => 'Stock limit exceed. In stock: '.$max_quantity.'.',
         ]
     );
-        
-              
+
+
         $order = new Order();
         $order->product_name = $inventory->product_name;
         $order->unit_price = $request->unit_price;
@@ -59,14 +59,14 @@ class OrderController extends Controller
         $order->customer_phone = $request->customer_phone;
         $order->status = $request->status;
         $order->added_by = session('username') ?? 'admin';
-        $order->save(); 
-        
+        $order->save();
+
         $inventory->quantity = $inventory->quantity - $request->quantity;
         $inventory->save();
 
         return redirect()->route('order.index');
     }
-    
+
     function deleteOrder($id){
         Order::destroy($id);
         return redirect()->route('order.index');
@@ -93,15 +93,16 @@ class OrderController extends Controller
         if($request->status == 'returned'){
             $inventory->quantity = $inventory->quantity + $request->quantity;
             $inventory->save();
-        }
 
+        }
+        
         $order->unit_price = $request->unit_price;
         $order->quantity = $request->quantity;
         $order->customer_name = $request->customer_name;
         $order->customer_phone = $request->customer_phone;
         $order->status = $request->status;
         $order->added_by = session('username') ?? 'admin';
-        $order->save(); 
+        $order->save();
 
         return redirect()->route('order.index');
     }
