@@ -15,10 +15,10 @@
                             <div class="col-9 text-end d-flex">
                             <form action="{{route('supplier.index')}}" method="get" class="w-100"  class="search-form">
                                 <div class="input-group text-end">
-                                
+
                                     <input value="{{request('search')}}" name="search" type="search" class=" header-search" placeholder="Search name/categroy/brand..." aria-label="Recipient's username" aria-describedby="basic-addon2">
                                     <button class="btn  input-group-text" id="basic-addon2"><i class="fa-solid fa-magnifying-glass"></i></button>
-                                
+
                                 </div>
                             </form>
                             </div>
@@ -27,7 +27,7 @@
                             </div>
                         </div>
                     </div>
-                </div>                
+                </div>
             </div>
             <div class="col-12">
                 <table class="table table-striped">
@@ -49,7 +49,7 @@
                             <td>#{{$supplier->id}}</td>
                             <td>{{$supplier->supplier_name}}</td>
                             <td >{{$supplier->supplier_email}}</td>
-                            <td>{{$supplier->supplier_phone}} Tk.</td>
+                            <td>{{$supplier->supplier_phone}}</td>
                             <td>{{$supplier->category_name}}</td>
                             <td>{{$supplier->brand_name}}</td>
                             <td class="action">
@@ -71,7 +71,7 @@
             </div>
         </div>
     </main>
-    
+
 @endsection
 
 <style>
