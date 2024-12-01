@@ -1,6 +1,53 @@
-# Inventory Management System
+# Inventory Management System (IMS)
 
-A web-based **Inventory Management System** built using **HTML**, **CSS**, **Bootstrap**, **JavaScript**, **Laravel**, and **MySQL**. This system enables efficient management of inventory data, including adding, editing, filtering, and deleting items. It was developed as a project for the **Software Engineering Lab** course.
+## Overview
+The **Inventory Management System (IMS)** is a robust and user-friendly web application designed to streamline inventory operations. It offers tools for real-time tracking, stock organization, reporting, and role-based access control, making it ideal for businesses of all sizes.
+
+## Features
+### Key Features
+- **User Roles & Access**:
+  - Admin Role: Full system control, including user and inventory management.
+  - Clerk Role: Limited access to manage daily tasks like sales and purchases.
+  - Role-Based Security: Protect sensitive data with customizable permissions.
+  
+- **Real-Time Inventory Tracking**:
+  - Automatic stock updates after transactions.
+  - Low stock alerts for timely restocking.
+  - Barcode scanning for efficient stock management.
+  
+- **Stock Management**:
+  - Multi-warehouse inventory tracking.
+  - Stock adjustments for damage or discrepancies.
+  - Audit tools for periodic checks.
+
+- **Reports & Analytics**:
+  - Comprehensive inventory, sales, and purchase reports.
+  - Customizable dashboards for key metrics.
+  - Insights into trends and product performance.
+
+### Additional Features
+- Mobile-responsive design for easy access on any device.
+- Product categorization with support for variants (e.g., sizes, colors).
+- Supplier and customer management.
+
+## Technology Stack
+- **Frontend**: React.js or Angular, Bootstrap
+- **Backend**: Node.js with Express.js or Django
+- **Database**: MySQL or MongoDB
+- **Hosting**: AWS, Azure, or Google Cloud
+- **Security**: Role-based authentication, SSL/TLS encryption
+
+## Installation
+### Prerequisites
+- **System Requirements**:
+  - Processor: Dual-Core or higher
+  - RAM: 4 GB or more
+  - Disk Space: 500 MB
+- **Software Requirements**:
+  - Node.js (version >= 14)
+  - MySQL or MongoDB
+  - Git
+
 
 ## Features
 
@@ -22,12 +69,25 @@ A web-based **Inventory Management System** built using **HTML**, **CSS**, **Boo
 - **Database**: MySQL
 - **Charts**: Chart.js
 
+## Usage
+### Admin Features:
+- Manage users, warehouses, and products.
+- Generate and download inventory and sales reports.
+- Set permissions for warehouse staff.
+
+### Warehouse Staff Features:
+- Update stock levels and product details.
+- Handle daily sales and purchase tasks.
+- Access insights via the dashboard.
+
+---
+
 ## Installation
 
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/inventory-management-system.git
+   git clone https://github.com/SadnurIslam/Inventory-Managment-System-Laravel.git
    cd inventory-management-system
 
 2. Install dependencies:
@@ -56,5 +116,3 @@ A web-based **Inventory Management System** built using **HTML**, **CSS**, **Boo
    ```bash
     http://localhost:8000
 
-## Credits
-Developed by <b>Sadnur Islam </b>
